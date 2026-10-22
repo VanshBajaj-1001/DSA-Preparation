@@ -26,3 +26,40 @@ public:
         return nullptr;
     }
 };
+TreeNode* insert(TreeNode* root,int val){
+    if(root==nullptr){
+        return new TreeNode(val);
+    }
+    if(val<root->val){
+        root->left=insert(root->left,val);
+    }
+    else if(val>root->val){
+        root->right=insert(root->right,val);
+    }
+    return root;
+}
+TreeNode* buildbst(){
+    TreeNode* root=nullptr;
+    int x;
+    while(cin>>x &&x!=-1){
+        root=insert(root,x);
+    }
+    return root;
+}
+int main(){
+    Solution obj;
+ cout << "Enter BST values (-1 to stop): ";
+    TreeNode* root = buildbst();
+int key;
+cout<<"ENter value to search"<<endl;
+cin>>key;
+TreeNode* ans=obj.searchBST(root,key);
+if(ans!=nullptr){
+    cout<<"Found";
+}
+else{
+    cout<<"not found";
+}
+return 0;
+
+}
